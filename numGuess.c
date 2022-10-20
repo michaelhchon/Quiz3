@@ -45,6 +45,12 @@ int main()
         //if 2
         else if(choice == 1) {
             //provide min and max number
+            printf("Max value you can set is 100: ");
+            scanf("%d", &max);
+            while(max < 0 || max > 100) {
+                printf("Invalid number, enter new value between 1 - 100: ");
+                scanf("%d", &max);
+            }
         }
 
         //if 3
