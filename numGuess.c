@@ -10,7 +10,7 @@ int main()
 {
     //prompt user for options
     srand(time(NULL));
-    int choice, userNum, randNum, winCon;
+    int choice, userNum, randNum, winCon, q;
     int max = 10;
     int loopCon = 1;
     do {
@@ -23,7 +23,8 @@ int main()
                 //prompt user for number
                 printf("Enter guess from 1 - %d: ", max);
                 //receive number then tell if correct or wrong
-                scanf("%d", &userNum);
+                if((q = scanf("%d", &userNum)) != 1)
+                    winCon = 0;
                 //receive new guess until they win
                 if(userNum == randNum) {
                     printf("%d is the correct number!\n", randNum);
@@ -37,7 +38,6 @@ int main()
                 }
             }
         }
-    
         //if 2
         else if(choice == 2) {
             //provide min and max number
@@ -48,7 +48,6 @@ int main()
                 scanf("%d", &max);
             }
         }
-
         //if 3
         else {
             // thank user for playing and end game
@@ -56,7 +55,6 @@ int main()
             loopCon = 0;
         }
     } while(loopCon == 1);
-
     return 0;    
 }
 
