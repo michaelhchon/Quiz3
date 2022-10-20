@@ -31,6 +31,14 @@ int main(int argc, char *argv[])
     total = menu[randChoice] + (menu[randChoice] * (tax / 100));
     total = total + (total * (tip / 100));
     //display meal cost, tax amount, tip amount, total to output
-    
+    if(randChoice == 0)
+        printf("Meal Cost: Salad - $%.2f\n", menu[randChoice]);
+    else if(randChoice == 1)
+        printf("Meal Cost: Soup - $%.2f\n", menu[randChoice]);
+    else if(randChoice == 2)
+        printf("Meal Cost: Sandwich - $%.2f\n", menu[randChoice]);
+    else
+        printf("Meal Cost: Pizza - $%.2f\n", menu[randChoice]);
+    printf("Tax Amount: $%.2f\nTip Amount: %%%d\nTotal Bill: $%.2f\n", tax, tip, total);
     return 0;
 }
