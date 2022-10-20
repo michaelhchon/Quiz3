@@ -2,6 +2,7 @@
 //102022
 //Computes tax and tip on a restaurant bill for a patron
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 int main(int argc, char *argv[])
@@ -9,11 +10,11 @@ int main(int argc, char *argv[])
     //receive tax (7.25 in ca) and tip
     const double tax = 7.25;
     int tip;
-    if(argc1 != 2) {
+    if(argc != 2) {
         printf("Usage: %s <tip percentage>\n", argv[0]);
         exit(EXIT_FAILURE);
     }
-    sscanf(arg[1], "%f", &tip);
+    sscanf(argv[1], "%d", &tip);
 
     //const prices for salad, soup, sandwich, pizza
     const double salad = 9.95;
@@ -39,6 +40,6 @@ int main(int argc, char *argv[])
         printf("Meal Cost: Sandwich - $%.2f\n", menu[randChoice]);
     else
         printf("Meal Cost: Pizza - $%.2f\n", menu[randChoice]);
-    printf("Tax Amount: $%.2f\nTip Amount: %%%d\nTotal Bill: $%.2f\n", tax, tip, total);
+    printf("Tax Amount: %%%.2f\nTip Amount: %%%d\nTotal Bill: $%.2f\n", tax, tip, total);
     return 0;
 }
