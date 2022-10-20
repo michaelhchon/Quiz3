@@ -10,20 +10,18 @@ int main()
 {
     //prompt user for options
     srand(time(NULL));
-    int choice;
-    int userNum;
-    int randNum;
+    int choice, userNum, randNum, winCon;
     int max = 10;
-    int winCon = 1;
     int loopCon = 1;
     do {
         choice = userPrompt();
         //if 1
         if(choice == 1) {
-            randNum = rand() % 10;
-            while(winCon = 1) {
+            randNum = rand() % max;
+            winCon = 1;
+            while(winCon == 1) {
                 //prompt user for number
-                printf("Enter guess from 1 - %d", max);
+                printf("Enter guess from 1 - %d: ", max);
                 //receive number then tell if correct or wrong
                 scanf("%d", &userNum);
                 //receive new guess until they win
@@ -38,12 +36,10 @@ int main()
                     printf("%d is too low! Try again.\n", userNum);
                 }
             }
-
-            //if input is 'q' return to menu
         }
     
         //if 2
-        else if(choice == 1) {
+        else if(choice == 2) {
             //provide min and max number
             printf("Max value you can set is 100: ");
             scanf("%d", &max);
@@ -59,7 +55,7 @@ int main()
             printf("Thank you for playing\n");
             loopCon = 0;
         }
-    } while(loopCon == 1)
+    } while(loopCon == 1);
 
     return 0;    
 }
@@ -67,7 +63,7 @@ int main()
 int userPrompt()
 {
     int choice;
-    printf("Press 1 to play a game\n");
+    printf("\nPress 1 to play a game\n");
     printf("Press 2 to change the max number\n");
     printf("Press 3 to quit\n");
     scanf("%d", &choice);
