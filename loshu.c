@@ -22,7 +22,11 @@ int main()
     result = loshu(arrOne);
     output(result, 9);
     //test with no lo shu square
-
+    int arrTwo[3][3] = {{1, 2, 3},
+                        {4, 5, 6},
+                        {7, 8, 9}};
+    result = loshu(arrTwo);
+    output(result, 9);
     //random 2d array
     //fill 2d array with numbers 1-9, no repeats
     //test through function
@@ -58,9 +62,9 @@ int loshu(int arr[R][C])
         total = 0;
     }
     //check diagonals
-    if((arr[0,0] + arr[1,1] + arr[2,2]) == 15)
+    if((arr[0][0] + arr[1][1] + arr[2][2]) == 15)
         check += 1;
-    if((arr[2,0] + arr[1,1] + arr[0,2]) == 15)
+    if((arr[2][0] + arr[1][1] + arr[0][2]) == 15)
         check += 1;
     //check if each one added up to 15
     if(check == 8)
