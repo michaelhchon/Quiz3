@@ -15,24 +15,27 @@ void printSquare(int arr[R][C]);
 
 int main()
 {
-    //srand(time(NULL));
+    srand(time(NULL));
     int result;
     //test with lo shu sqaure
     int arrOne[R][C] = {{4, 9, 2},
                         {3, 5, 7},
                         {8, 1, 6}};
     result = loshu(arrOne);
+    printf("Result for working Lo Shu Magic Square:\n");
     output(result, 9);
     //test with no lo shu square
     int arrTwo[R][C] = {{1, 2, 3},
                         {4, 5, 6},
                         {7, 8, 9}};
     result = loshu(arrTwo);
+    printf("Result for non-working Lo Shu Magic Square:\n");
     output(result, 9);
 
     //fill 2d array with random numbers 1-9, no repeats
     int arrThree[][];
     int squares = 0;
+    printf("Result for randomly filled square:\n");
     while(check == 1) {
         //test through function
         arrThree = fillArray(R, C);
@@ -42,6 +45,7 @@ int main()
         //print square and show placement of values
         if(result == 1)
             printSquare(arrThree);
+            check = 0;
     }
 
     return 0;
@@ -96,7 +100,21 @@ void output(int result, int tries)
 
 int **fillArray(int x, int y)
 {
-
+    int arr[x][y];
+    int rand;
+    int loop = 1;
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            while(loop == 1) {
+                rand = rand() % 9;
+                if(arr[i][j] != rand) {
+                    arr[i][j] = rand;
+                    loop = 0;
+                }
+            }
+        }
+    }
+    return arr;
 }
 
 void printSquare(int arr[R][C])
