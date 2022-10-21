@@ -10,7 +10,7 @@
 //write function that accepts 2d array and checks if lo shu square
 int loshu(int arr[R][C]);
 void output(int result, int tries);
-int **fillArray(int x, int y);
+void fillArray(int arr[R][C]);
 void printSquare(int arr[R][C]);
 
 int main()
@@ -33,12 +33,13 @@ int main()
     output(result, 9);
 
     //fill 2d array with random numbers 1-9, no repeats
-    int arrThree[][];
+    int arrThree[R][C];
     int squares = 0;
+    int check = 1;
     printf("Result for randomly filled square:\n");
     while(check == 1) {
         //test through function
-        arrThree = fillArray(R, C);
+        fillArray(arrThree);
         result = loshu(arrThree);
         squares += 9;
         output(result, squares);
@@ -95,26 +96,24 @@ void output(int result, int tries)
     if(result == 1)
         printf("Array is a Lo Shu Magic Square. %d squares tested.\n", tries);
     else
-        printf("Array is not a Lo Magic Square.\n");
+        printf("Array is not a Lo Shu Magic Square.\n");
 }
 
-int **fillArray(int x, int y)
+void fillArray(int arr[R][C])
 {
-    int arr[x][y];
-    int rand;
+    int randNum;
     int loop = 1;
     for(int i = 0; i < 3; i++) {
         for(int j = 0; j < 3; j++) {
             while(loop == 1) {
-                rand = rand() % 9;
-                if(arr[i][j] != rand) {
-                    arr[i][j] = rand;
+                randNum = rand() % 9;
+                if(arr[i][j] != randNum) {
+                    arr[i][j] = randNum;
                     loop = 0;
                 }
             }
         }
     }
-    return arr;
 }
 
 void printSquare(int arr[R][C])
