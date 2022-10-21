@@ -9,13 +9,18 @@
 
 //write function that accepts 2d array and checks if lo shu square
 int loshu(int arr[R][C]);
+void output(int result, int tries);
 
 int main()
 {
-    srand(time(NULL));
-    
+    //srand(time(NULL));
+    int result;
     //test with lo shu sqaure
-
+    int arrOne[3][3] = {{4, 9, 2},
+                        {3, 5, 7},
+                        {8, 1, 6}};
+    result = loshu(arrOne);
+    output(result, 9);
     //test with no lo shu square
 
     //random 2d array
@@ -62,4 +67,12 @@ int loshu(int arr[R][C])
         return 1;
     else
         return 0;
+}
+
+void output(int result, int tries)
+{
+    if(result == 1)
+        printf("Array is a Lo Shu Magic Square. %d squares tested.\n", tries);
+    else
+        printf("Array is not a Lo Magic Square.\n");
 }
