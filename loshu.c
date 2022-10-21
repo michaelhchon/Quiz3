@@ -93,3 +93,17 @@ void output(int result, int tries)
     else
         printf("Array is not a Lo Magic Square.\n");
 }
+
+int **fillArray(int x, int y)
+{
+
+}
+
+void printSquare(int arr[R][C])
+{
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            printf("[%d %d %d]\n", arr[i][j]);
+        }
+    }
+}
