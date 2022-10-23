@@ -29,14 +29,14 @@ int main()
                         {4, 5, 6},
                         {7, 8, 9}};
     result = loshu(arrTwo);
-    printf("Result for non-working Lo Shu Magic Square:\n");
+    printf("\nResult for non-working Lo Shu Magic Square:\n");
     output(result, 9);
 
     //fill 2d array with random numbers 1-9, no repeats
     int arrThree[R][C];
     int squares = 0;
     int check = 1;
-    printf("Result for randomly filled square:\n");
+    printf("\nResult for randomly filled square:\n");
     while(check == 1) {
         //test through function
         fillArray(arrThree);
@@ -44,9 +44,10 @@ int main()
         squares += 9;
         output(result, squares);
         //print square and show placement of values
-        if(result == 1)
+        if(result == 1) {
             printSquare(arrThree);
             check = 0;
+        }
     }
 
     return 0;
@@ -89,10 +90,6 @@ int loshu(int arr[R][C])
 
 void output(int result, int tries)
 {
-    if(tries > 9) {
-        if(result == 1)
-            printf("Array is a Lo Shu Magic Square. %d squares tested.\n", tries);
-    }
     if(result == 1)
         printf("Array is a Lo Shu Magic Square. %d squares tested.\n", tries);
     else
@@ -103,15 +100,76 @@ void fillArray(int arr[R][C])
 {
     int randNum;
     int loop = 1;
-    for(int i = 0; i < 3; i++) {
-        for(int j = 0; j < 3; j++) {
-            while(loop == 1) {
-                randNum = rand() % 9;
-                if(arr[i][j] != randNum) {
-                    arr[i][j] = randNum;
-                    loop = 0;
-                }
-            }
+    randNum = (rand() % 9) + 1;
+    arr[0][0] = randNum;
+    while(loop == 1) {
+        randNum = (rand() % 9) + 1;
+        if(randNum != arr[0][0]) {
+            arr[0][1] = randNum;
+            loop = 0;
+        }
+    }
+    loop = 1;
+    while(loop == 1) {
+        randNum = (rand() % 9) + 1;
+        if(randNum != arr[0][0] && randNum != arr[0][1]) {
+            arr[0][2] = randNum;
+            loop = 0;
+        }
+    }
+    loop = 1;
+    while(loop == 1) {
+        randNum = (rand() % 9) + 1;
+        if(randNum != arr[0][0] && randNum != arr[0][1] && randNum != arr[0][2]) {
+            arr[1][0] = randNum;
+            loop = 0;
+        }
+    }   
+    loop = 1;
+    while(loop == 1) {
+        randNum = (rand() % 9) + 1;
+        if(randNum != arr[0][0] && randNum != arr[0][1] && randNum != arr[0][2]
+            && randNum != arr[1][0]) {
+            arr[1][1] = randNum;
+            loop = 0;
+        }
+    }
+    loop = 1;
+    while(loop == 1) {
+        randNum = (rand() % 9) + 1;
+        if(randNum != arr[0][0] && randNum != arr[0][1] && randNum != arr[0][2]
+            && randNum != arr[1][0] && randNum != arr[1][1]) {
+            arr[1][2] = randNum;
+            loop = 0;
+        }
+    }
+    loop = 1;
+    while(loop == 1) {
+        randNum = (rand() % 9) + 1;
+        if(randNum != arr[0][0] && randNum != arr[0][1] && randNum != arr[0][2]
+            && randNum != arr[1][0] && randNum != arr[1][1] && randNum != arr[1][2]) {
+            arr[2][0] = randNum;
+            loop = 0;
+        }
+    }
+    loop = 1;
+    while(loop == 1) {
+        randNum = (rand() % 9) + 1;
+        if(randNum != arr[0][0] && randNum != arr[0][1] && randNum != arr[0][2]
+            && randNum != arr[1][0] && randNum != arr[1][1] && randNum != arr[1][2]
+            && randNum != arr[2][0]) {
+            arr[2][1] = randNum;
+            loop = 0;
+        }
+    }
+    loop = 1;
+    while(loop == 1) {
+        randNum = (rand() % 9) + 1;
+        if(randNum != arr[0][0] && randNum != arr[0][1] && randNum != arr[0][2]
+            && randNum != arr[1][0] && randNum != arr[1][1] && randNum != arr[1][2]
+            && randNum != arr[2][0] && randNum != arr[2][1]) {
+            arr[2][2] = randNum;
+            loop = 0;
         }
     }
 }
@@ -119,8 +177,10 @@ void fillArray(int arr[R][C])
 void printSquare(int arr[R][C])
 {
     for(int i = 0; i < 3; i++) {
+        printf("[");
         for(int j = 0; j < 3; j++) {
-            printf("[%d %d %d]\n", arr[i][j]);
+            printf(" %d ", arr[i][j]);
         }
+        printf("]\n");
     }
 }
